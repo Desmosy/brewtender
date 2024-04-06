@@ -27,9 +27,7 @@ The following **additional** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
-
-
-
+<a href="//imgur.com/a/uTIlhzs">Video </a>
 GIF created with ...  
 
 [ScreenToGif](https://www.screentogif.com/)
