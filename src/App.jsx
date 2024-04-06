@@ -49,18 +49,18 @@ function App() {
 
   return (
     <Router>
-      <div className="app">
-        <h1>BrewTender</h1>
-        <form className="app__searchForm" onSubmit={onSubmit}>
+      <div className="app-container">
+        <h1> 🍻 BrewTender 🍻</h1>
+        <form className="search-form" onSubmit={onSubmit}>
           <input
-            className="app__input"
+            className="input"
             type="text"
             placeholder="Enter city"
             autoComplete="off"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <select onChange={handleFilterChange}>
+          <select className="select" onChange={handleFilterChange}>
             <option value="">All Types</option>
             <option value="micro">Micro</option>
             <option value="regional">Regional</option>
@@ -73,23 +73,31 @@ function App() {
           <button type="submit"> Search </button>
         </form>
         <BreweryChart />
-        <div>
-          <h2>Breweries Found: {totalBreweries}</h2>
-        </div>
-        <div>
-          <h2>Filtered Breweries</h2>
-          <ul className="brewery-list">
-            {breweries.map((brewery) => (
-              <li key={brewery.id}>
-                <h3>{brewery.name}</h3>
-                <p>Type: {brewery.brewery_type}</p>
-
-                <Link to={`/brewery/${brewery.id}`}>View Details</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        
+        <Routes>
+          <Route
+            path="/"
+            element={(
+              <div>
+                <div>
+                  <h2>Breweries Found: {totalBreweries}</h2>
+                </div>
+                <div>
+                  <h2>Filtered Breweries</h2>
+                  <ul className="brewery-list">
+                    {breweries.map((brewery) => (
+                      <li key={brewery.id}>
+                        <h3>{brewery.name}</h3>
+                        <p>Type: {brewery.brewery_type}</p>
+                        <Link to={`/brewery/${brewery.id}`}>View Details</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+          />
+          <Route path="/brewery/:id" element={<DetailView />} />
+        </Routes>
       </div>
     </Router>
   );

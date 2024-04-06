@@ -68,7 +68,7 @@ const BreweryChart = () => {
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
-            <Legend />
+            
             {breweryTypeData.map((entry, index) => (
               <Line key={`line-${index}`} type="monotone" dataKey="value" stroke="#8884d8" />
             ))}
